@@ -8,9 +8,11 @@ from mmengine.registry import init_default_scope
 from mmengine.runner import load_checkpoint
 from mmseg.registry import MODELS
 from mmseg.utils import SampleList, dataset_aliases, get_classes, get_palette
+from rein.hooks.load_backbone_hook import load_backbone
+import torch
 
 def init_model(config: Union[str, Path, Config],
-               checkpoint: Optional[str] = None,
+               checkpoint = None,
                device: str = 'cuda:0',
                cfg_options: Optional[dict] = None):
     """Initialize a segmentor from config file.
@@ -18,8 +20,9 @@ def init_model(config: Union[str, Path, Config],
     Args:
         config (str, :obj:`Path`, or :obj:`mmengine.Config`): Config file path,
             :obj:`Path`, or the config object.
-        checkpoint (str, optional): Checkpoint path. If left as None, the model
-            will not load any weights.
+        checkpoint: 
+            if type==str: load checkpoint path directly
+            if type==dict: load checkpoint ['backbone'] and checkpoint['rein_head'].
         device (str, optional) CPU/CUDA device option. Default 'cuda:0'.
             Use 'cpu' for loading model on CPU.
         cfg_options (dict, optional): Options to override some settings in
@@ -42,7 +45,15 @@ def init_model(config: Union[str, Path, Config],
 
     model = MODELS.build(config.model)
     if checkpoint is not None:
-        checkpoint = load_checkpoint(model, checkpoint, map_location='cpu')
+        if isinstance(checkpoint,str):
+            checkpoint=torch.load(checkpoint,map_location='cpu')
+        elif isinstance(checkpoint,dict):
+            backbone=checkpoint['backbone']
+            rein_head=checkpoint['rein_head']
+            checkpoint=torch.load(rein_head,map_location='cpu')
+            load_backbone(checkpoint,backbone)
+        else:
+            raise NotImplementedError()
         if 'meta' not in checkpoint:
             checkpoint['meta']={}
         dataset_meta = checkpoint['meta'].get('dataset_meta', None)
