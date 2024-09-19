@@ -61,7 +61,7 @@ If you find our code or data helpful, please cite our paper:
 ```
 
 ## 🔥 News!
-* To facilitate users in integrating reins into their own projects, we provide a simplified version of reins: [simple_reins](https://github.com/w1oves/Rein/tree/train/simple_reins). With this version, users can easily use reins as a feature extractor. (Note: This version has removed features related to mask2former)
+* 🔥 To facilitate users in integrating reins into their own projects, we provide a simplified version of reins: [simple_reins](https://github.com/w1oves/Rein/tree/train/simple_reins). With this version, users can easily use reins as a feature extractor. (Note: This version has removed features related to mask2former)
 
 * We have uploaded the config for `ResNet` and `ConvNeXt`.
 
@@ -71,7 +71,7 @@ If you find our code or data helpful, please cite our paper:
 
 * 🔥 Using only the data from the Cityscapes training set, we achieved an average mIoU of **77.56% on the ACDC** test set! This result ranks **first** in the DGSS methods on the ACDC [benchmark](https://acdc.vision.ee.ethz.ch/submissions/65b6848187f1a5171cf44c34)! Checkpoint is avaliable at [release](https://github.com/w1oves/Rein/releases/tag/Cityscapes).
 
-* 🔥 Using only synthetic data (UrbanSyn, GTAV, and Synthia), Rein achieved an mIoU of **78.4\% on Cityscapes**! Checkpoint is avaliable at [release](https://github.com/w1oves/Rein/releases/tag/UrbanSyn%2BGTAV%2BSynthia).
+* Using only synthetic data (UrbanSyn, GTAV, and Synthia), Rein achieved an mIoU of **78.4\% on Cityscapes**! Checkpoint is avaliable at [release](https://github.com/w1oves/Rein/releases/tag/UrbanSyn%2BGTAV%2BSynthia).
 
 ## Try and Test
 **Experience the demo:** Users can open [demo.ipynb](demo.ipynb) in any Jupyter-supported editor to explore our demonstration.
