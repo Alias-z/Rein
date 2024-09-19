@@ -61,6 +61,8 @@ If you find our code or data helpful, please cite our paper:
 ```
 
 ## 🔥 News!
+* To facilitate users in integrating reins into their own projects, we provide a simplified version of reins: [simple_reins](https://github.com/w1oves/Rein/tree/train/simple_reins). With this version, users can easily use reins as a feature extractor. (Note: This version has removed features related to mask2former)
+
 * We have uploaded the config for `ResNet` and `ConvNeXt`.
 
 * 🔥 We have uploaded the checkpoint and config for `+1/16 of Cityscapes` training set, and it get **82.5% on the Cityscapes** validation set!
