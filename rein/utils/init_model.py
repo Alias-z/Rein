@@ -87,6 +87,7 @@ def init_model(config: Union[str, Path, Config],
                 'palette': get_palette(dataset_name)
             }
     model.cfg = config  # save the config in the model for convenience
+    model.load_state_dict(checkpoint['state_dict'])
     model.to(device)
     model.eval()
     return model
