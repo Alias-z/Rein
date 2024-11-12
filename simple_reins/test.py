@@ -22,7 +22,7 @@ def test_dinov2():
     """
     checkpoint_file = "dinov2_vitl14_512x512.pth"
     model = get_std_reins_dinov2_large()
-    model.load_state_dict(torch.load(checkpoint_file, "cpu"))
+    model.load_state_dict(torch.load(checkpoint_file, "CPU"),strict=False)
     model.train(True)
     random_image = torch.randn([2, 3, 512, 512])
     result = model.forward(random_image)
